@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const CLIENTID = process.env.CLIENT_ID;
 
-const REDIRECTURI = "http://localhost:3000/";
+const REDIRECTURI = "http://localhost:3000/api/callback";
 
 export async function GET() {
   var state = generateRandomString(16);

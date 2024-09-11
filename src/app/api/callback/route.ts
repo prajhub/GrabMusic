@@ -5,6 +5,7 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET!;
 const REDIRECT_URI = "http://localhost:3000/api/callback";
 
 export async function GET(req: NextRequest) {
+  console.log("starting to get acc token");
   const { searchParams } = new URL(req.url);
   const code = searchParams.get("code");
   const state = searchParams.get("state");
@@ -36,15 +37,16 @@ export async function GET(req: NextRequest) {
   if (tokenResponse.ok) {
     const { access_token, refresh_token, expires_in } = data;
 
-    // Now you can use the access_token to fetch data from Spotify API
-    // You can also store the access_token, refresh_token, and expires_in in a session or cookie
-    return NextResponse.json({
-      access_token,
-      refresh_token,
-      expires_in,
-    });
+    console.log("Successfully obtained tokens");
+
+    const encodedAccessToken = encodeURIComponent(access_token);
+    const encodedRefreshToken = encodeURIComponent(refresh_token);
+
+    const dashboardUrl = `/success-login?access_token=${encodedAccessToken}&refresh_token=${encodedRefreshToken}&expires_in=${expires_in}`;
+    console.log("Redirecting to:", dashboardUrl);
+
+    return NextResponse.redirect(new URL(dashboardUrl, req.url));
   } else {
-    // Handle error
     return NextResponse.json({
       error: data.error,
       error_description: data.error_description,

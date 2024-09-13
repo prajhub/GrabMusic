@@ -20,6 +20,6 @@ export const refreshAccessToken = async () => {
     localStorage.setItem("expires_in", data.expiresIn);
     console.log("Data stored in local storage.");
   } else {
-    console.log("error");
+    console.log("Error refreshing access token.");
   }
 };

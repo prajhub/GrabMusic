@@ -1,13 +1,5 @@
-"use client";
-
-import Image from "next/image";
-import { refreshAccessToken } from "@/lib/spotify-api";
-import { useEffect } from "react";
+import Hero from "./_component/Hero";
 
 export default function Home() {
-  useEffect(() => {
-    refreshAccessToken();
-  }, []);
-
-  return <div>Hi</div>;
+  return <Hero />;
 }

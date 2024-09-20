@@ -1,13 +1,15 @@
 "use client";
 
 import React from "react";
+import ProfileDropdown from "./Profile-dropdown";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ModeToggle } from "@/components/ui/theme-toggle";
 
 const Navbar = () => {
   return (
     <nav className=" bg-[#ec4b60] w-full flex relative justify-between items-center mx-auto px-8 h-20">
-      <h1 className=" font-semibold text-4xl tracking-wide">GrabMusic</h1>
+      <h1 className=" font-semibold text-3xl tracking-wide">GrabMusic</h1>
       <div className="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
         <div className="inline-block">
           <div className="inline-flex items-center max-w-full">
@@ -39,25 +41,14 @@ const Navbar = () => {
       <div className="flex-initial">
         <div className="flex justify-end items-center relative">
           <div className="flex mr-4 items-center">
-            <a
-              className="inline-block py-2 px-3 hover:bg-gray-200 rounded-full"
-              href="#"
-            >
-              <div className="flex items-center relative cursor-pointer whitespace-nowrap">
-                Become a host
-              </div>
-            </a>
+            <div className="flex items-center relative ">
+              <ModeToggle />
+            </div>
           </div>
 
           <div className="block">
             <div className="inline relative">
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
+              <ProfileDropdown />
             </div>
           </div>
         </div>

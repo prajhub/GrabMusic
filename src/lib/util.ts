@@ -1,5 +1,3 @@
-import { useSearchParams, useRouter } from "next/navigation";
-
 export function generateRandomString(length: number): string {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

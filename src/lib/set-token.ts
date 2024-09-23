@@ -16,7 +16,11 @@ export function useSetToken() {
       localStorage.setItem("refresh_token", refreshToken);
       localStorage.setItem("expires_in", expiresIn);
 
-      console.log("Tokens stored in localStorage");
+      console.log("Stored access token:", localStorage.getItem("access_token"));
+      console.log(
+        "Stored refresh token:",
+        localStorage.getItem("refresh_token")
+      );
     } else {
       console.error("Failed to retrieve tokens from URL");
     }

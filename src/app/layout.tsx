@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
 import { Lilita_One } from "next/font/google";
-import Navbar from "./_component/Navbar";
 import QueryProvider from "@/components/ui/tstack-query";
+import { ConditionalNavbar } from "./_component/Navbar";
 
 const lilitiaOne = Lilita_One({
   weight: "400",
@@ -30,7 +30,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
+            <ConditionalNavbar />
             {children}
           </ThemeProvider>
         </QueryProvider>

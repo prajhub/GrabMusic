@@ -3,7 +3,7 @@
 import React from "react";
 import ProfileDropdown from "./Profile-dropdown";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { usePathname } from "next/navigation";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 
 const Navbar = () => {
@@ -58,3 +58,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+export function ConditionalNavbar() {
+  const pathname = usePathname();
+
+  if (pathname === "/success-login") {
+    return null;
+  }
+
+  return <Navbar />;
+}

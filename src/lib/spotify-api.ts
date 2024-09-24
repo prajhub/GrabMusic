@@ -56,3 +56,65 @@ export const refreshAccessToken = async () => {
     console.log("Error refreshing access token.");
   }
 };
+
+export function logOut() {
+  try {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("expires_in");
+    //window.location.reload();
+    console.log("Logged out.");
+  } catch (error) {
+    console.log("Error logging out:", error);
+  }
+}
+
+//Getting user's details
+
+export const getUserTopItems = async () => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+    const res = await fetch(
+      "https://api.spotify.com/v1/me/top/artists?limit=4",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    } else {
+      console.log("Error retrieving user top artists.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error retrieving user top artists:", error);
+  }
+};
+
+export const getUserRecentlyPlayed = async () => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+    const res = await fetch(
+      "https://api.spotify.com/v1/me/player/recently-played?limit=5",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    } else {
+      console.log("Error retrieving user recently played.");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error retrieving user recently played:", error);
+  }
+};

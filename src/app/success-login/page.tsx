@@ -26,7 +26,7 @@ const SuccessLogin = () => {
 
               {/* Home button with arrow */}
               <div className="inline-flex items-center space-x-2 tracking-wide text-white font-normal px-4 py-2 rounded-lg focus:outline-none">
-                <a href="#" className="flex items-center">
+                <a href="/" className="flex items-center">
                   Home
                   <svg
                     className="ml-2 w-4 h-4"

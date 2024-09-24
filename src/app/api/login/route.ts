@@ -9,7 +9,8 @@ export async function GET() {
   console.log("starting to auth");
   try {
     var state = generateRandomString(16);
-    var scope = "user-read-private user-read-email";
+    var scope =
+      "user-read-private user-read-email user-top-read user-read-recently-played";
 
     const params = new URLSearchParams({
       response_type: "code",

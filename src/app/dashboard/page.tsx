@@ -131,7 +131,7 @@ export default function Dashboard() {
               <Disc className="mr-2" /> Recently Played
             </h2>
             <ul className="space-y-2">
-              {recentlyPlayed.items.map((item: any) => (
+              {recentlyPlayed?.items.map((item: any) => (
                 <li key={item.track.id} className="flex items-center">
                   <div className="w-10 h-10 mr-3 relative">
                     <Image

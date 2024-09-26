@@ -118,3 +118,29 @@ export const getUserRecentlyPlayed = async () => {
     console.error("Error retrieving user recently played:", error);
   }
 };
+
+export const fetchPlaylist = async (query: string) => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+    const res = await fetch(
+      `https://api.spotify.com/v1/search?type=playlist&offset=0&q=${encodeURIComponent(
+        query
+      )}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    } else {
+      console.log("Error retrieving playlist.");
+      return new Error("Error retrieving playlist.");
+    }
+  } catch (error) {
+    console.error("Error retrieving playlist:", error);
+  }
+};

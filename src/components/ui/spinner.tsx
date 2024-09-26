@@ -1,6 +1,6 @@
-import { BeatLoader } from "react-spinners";
+import { BeatLoader, SquareLoader } from "react-spinners";
 
-export default function Spinner() {
+const SpinnerOne = () => {
   return (
     <div>
       <BeatLoader
@@ -12,4 +12,20 @@ export default function Spinner() {
       />
     </div>
   );
-}
+};
+
+const SpinnerTwo = () => {
+  return (
+    <div>
+      <SquareLoader
+        color="#FFFFFF"
+        loading={true}
+        size={150}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
+  );
+};
+
+export { SpinnerOne, SpinnerTwo };

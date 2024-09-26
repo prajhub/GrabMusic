@@ -4,7 +4,7 @@ import { fetchPlaylist } from "@/lib/spotify-api";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-
+import { SpinnerTwo } from "@/components/ui/spinner";
 import Image from "next/image";
 import { Search, Music } from "lucide-react";
 
@@ -19,7 +19,11 @@ export default function SearchResult() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <SpinnerTwo />
+      </div>
+    );
   }
 
   return (

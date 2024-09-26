@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { logOut } from "@/lib/spotify-api";
 import { useQuery } from "@tanstack/react-query";
 import { getUserProfile } from "@/lib/spotify-api";
-import Spinner from "@/components/ui/spinner";
+import { SpinnerOne } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 export default function ProfileDropdown() {
@@ -42,7 +42,7 @@ export default function ProfileDropdown() {
   if (isLoading) {
     return (
       <div>
-        <Spinner />
+        <SpinnerOne />
       </div>
     );
   }

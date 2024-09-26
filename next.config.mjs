@@ -10,6 +10,7 @@ const nextConfig = {
       "seed-mix-image.spotifycdn.com",
       "pickasso.spotifycdn.com",
       "image-cdn-fa.spotifycdn.com",
+      "charts-images.scdn.co",
     ],
   },
 };

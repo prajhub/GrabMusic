@@ -2,7 +2,7 @@
 
 import { fetchPlaylist } from "@/lib/spotify-api";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+
 import { useQuery } from "@tanstack/react-query";
 import { SpinnerTwo } from "@/components/ui/spinner";
 import Image from "next/image";
@@ -14,10 +14,11 @@ export default function SearchResult() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["playlist", results], // Cache by playlist and query
-    queryFn: () => fetchPlaylist(results || ""), // Fetch playlist using the query
-    enabled: !!results, // Only run if query exists
+    queryFn: () => fetchPlaylist(results || ""),
+    enabled: !!results,
   });
 
+  console.log(data);
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -45,6 +46,7 @@ export default function SearchResult() {
                     src={playlist.images[0]?.url || "/api/placeholder/300/300"}
                     alt={playlist.name}
                     layout="fill"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     objectFit="cover"
                     className="rounded-md"
                   />

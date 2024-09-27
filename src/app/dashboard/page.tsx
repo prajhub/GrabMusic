@@ -13,22 +13,6 @@ import {
 } from "@/lib/spotify-api";
 
 const mockUserData = {
-  name: "John Doe",
-  followers: 1234,
-  following: 567,
-  playlists: 45,
-  topArtists: [
-    { name: "Artist 1", image: "/api/placeholder/64/64" },
-    { name: "Artist 2", image: "/api/placeholder/64/64" },
-    { name: "Artist 3", image: "/api/placeholder/64/64" },
-    { name: "Artist 4", image: "/api/placeholder/64/64" },
-    { name: "Artist 5", image: "/api/placeholder/64/64" },
-  ],
-  recentlyPlayed: [
-    { name: "Song 1", artist: "Artist 1" },
-    { name: "Song 2", artist: "Artist 2" },
-    { name: "Song 3", artist: "Artist 3" },
-  ],
   userPlaylists: [
     { name: "My Favorites", tracks: 42, image: "/api/placeholder/48/48" },
     { name: "Workout Mix", tracks: 28, image: "/api/placeholder/48/48" },
@@ -40,6 +24,7 @@ export default function Dashboard() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["userProfile"],
     queryFn: getUserProfile,
+    retry: false,
   });
 
   const { data: topArtists, isLoading: isLoadingTopArtists } = useQuery({

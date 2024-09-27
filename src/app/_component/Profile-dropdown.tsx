@@ -22,6 +22,7 @@ export default function ProfileDropdown() {
 
   useEffect(() => {
     setIsClient(true);
+    refetch();
   }, []);
 
   const handleLogin = () => {
@@ -30,18 +31,22 @@ export default function ProfileDropdown() {
 
   const handleLogout = () => {
     logOut();
+    refetch();
     router.push("/");
   };
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["userProfile"],
     queryFn: getUserProfile,
-    enabled: isClient && !!localStorage.getItem("access_token"),
+    enabled: isClient,
+    retry: false,
+
+    staleTime: isClient ? 1000 * 60 * 5 : 0,
   });
 
-  if (isLoading) {
+  if (!isClient || isLoading) {
     return (
-      <div>
+      <div className="flex items-center justify-center">
         <SpinnerOne />
       </div>
     );

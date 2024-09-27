@@ -5,11 +5,6 @@ import { Lilita_One, Rowdies } from "next/font/google";
 import QueryProvider from "@/components/ui/tstack-query";
 import { ConditionalNavbar } from "./_component/Navbar";
 
-const lilitiaOne = Lilita_One({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 const rowDies = Rowdies({
   weight: "300",
   subsets: ["latin"],

@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 const SuccessLoginClient = () => {
   useSetToken();
 
-  console.log("Sucess!");
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#ed4a60] dark:bg-[#ed4a60]">
       <section className="w-full">

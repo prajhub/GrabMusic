@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
+import Error from "next/error";
 
 interface Track {
   track: {
@@ -35,7 +36,7 @@ export default function CreatePlaylist({
   const [playlistDescription, setPlaylistDescription] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["userProfile"],
     queryFn: getUserProfile,
 
@@ -60,7 +61,7 @@ export default function CreatePlaylist({
       toast.success("Playlist created successfully!");
       setDialogOpen(false);
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error("Error creating playlist!");
       console.error(error);
     },

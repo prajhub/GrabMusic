@@ -8,8 +8,8 @@ const REDIRECTURI = "http://localhost:3000/api/callback";
 export async function GET() {
   console.log("starting to auth");
   try {
-    var state = generateRandomString(16);
-    var scope =
+    let state = generateRandomString(16);
+    let scope =
       "user-read-private user-read-email playlist-modify-public playlist-modify-private user-top-read user-read-recently-played ";
 
     const params = new URLSearchParams({

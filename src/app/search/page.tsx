@@ -7,17 +7,20 @@ import { useQuery } from "@tanstack/react-query";
 import { SpinnerTwo } from "@/components/ui/spinner";
 import Image from "next/image";
 import { Search, Music } from "lucide-react";
+import { Playlist } from "@/lib/util";
 
 export default function SearchResult() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const results = searchParams.get("query");
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["playlist", results], // Cache by playlist and query
     queryFn: () => fetchPlaylist(results || ""),
     enabled: !!results,
   });
+
+  if (data) console.log(data);
 
   const pushSinglePlaylist = (playlistId: string) => {
     router.push(`/playlist?id=${playlistId}`);
@@ -39,7 +42,7 @@ export default function SearchResult() {
 
         {data?.playlists?.items?.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {data.playlists.items.map((playlist: any) => (
+            {data.playlists.items.map((playlist: Playlist) => (
               <div
                 onClick={() => pushSinglePlaylist(playlist.id)}
                 key={playlist.id}

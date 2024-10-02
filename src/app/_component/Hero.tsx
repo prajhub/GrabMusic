@@ -30,7 +30,7 @@ export default function Hero() {
 
       <p className="mx-auto mt-9 max-w-2xl text-lg tracking-tight text-slate-700 sm:mt-6">
         <span className="inline-block text-white tracking-wide">
-          Copy other's playlist
+          Copy other&apos;s playlist
         </span>
         <span className="inline-block pl-1 text-white tracking-wide">
           into your own.
@@ -43,7 +43,7 @@ export default function Hero() {
           data-headlessui-state=""
         >
           <Button className="bg-[#44183b] tracking-wide hover:bg-[#2f0a26] text-lg text-white py-5 rounded-full px-8">
-            Start Now{" "}
+            Start Now&nbsp;
           </Button>
         </div>
       </div>

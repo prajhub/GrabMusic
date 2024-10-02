@@ -11,11 +11,20 @@ export function generateRandomString(length: number): string {
   return result;
 }
 
+interface Image {
+  height: number;
+  width: number;
+  url: string;
+}
+
 export interface Artist {
   external_urls: {
     spotify: string;
   };
   href: string;
+  popularity: number;
+  images: Image[];
+
   id: string;
   name: string;
   type: string;
@@ -27,6 +36,7 @@ interface Album {
   album_type: string;
   id: string;
   name: string;
+  images: Image[];
   release_date: string;
   href: string;
   external_urls: {
@@ -60,8 +70,47 @@ interface Track {
   uri: string;
 }
 
+export interface recentlyPlayedTrack {
+  context: {
+    external_urls: {
+      spotify: string;
+    };
+    href: string;
+    type: string;
+    uri: string;
+  };
+  played_at: string; // ISO 8601 string
+  track: {
+    album: Album;
+    artists: Artist[];
+    id: string;
+    name: string;
+    popularity: number; // Assuming you have popularity
+    uri: string;
+    type: string; // Can be 'track'
+  };
+}
+
 export interface TrackResponse {
   items: {
     track: Track;
   }[];
+}
+
+export interface Playlist {
+  id: string;
+  name: string;
+  images: Image[];
+  description: string;
+  tracks: {
+    total: number;
+  };
+}
+
+export interface TopArtistsResponse {
+  items: Artist[];
+  total: number;
+  limit: number;
+  offset: number;
+  href: string;
 }

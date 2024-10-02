@@ -6,7 +6,7 @@ const SearchClient = dynamic(() => import("./SearchClient"), {
   ssr: false,
 });
 
-export default function PlaylistDetails() {
+export default function SearchPage() {
   return (
     <Suspense fallback={<SpinnerOne />}>
       <SearchClient />

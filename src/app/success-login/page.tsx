@@ -2,14 +2,14 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import { SpinnerOne } from "@/components/ui/spinner";
 
-const SuccessClient = dynamic(() => import("./SuccessClient"), {
+const SuccessLoginClient = dynamic(() => import("./SuccessClient"), {
   ssr: false,
 });
 
-export default function PlaylistDetails() {
+export default function SuccessLoginPage() {
   return (
     <Suspense fallback={<SpinnerOne />}>
-      <SuccessClient />
+      <SuccessLoginClient />
     </Suspense>
   );
 }

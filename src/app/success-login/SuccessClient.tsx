@@ -3,7 +3,7 @@
 import { useSetToken } from "@/lib/set-token";
 import { Button } from "@/components/ui/button";
 
-const SuccessLogin = () => {
+const SuccessLoginClient = () => {
   useSetToken();
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#ed4a60] dark:bg-[#ed4a60]">
@@ -52,4 +52,4 @@ const SuccessLogin = () => {
   );
 };
 
-export default SuccessLogin;
+export default SuccessLoginClient;

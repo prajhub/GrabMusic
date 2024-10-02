@@ -4,7 +4,7 @@ import React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import { Disc, List } from "lucide-react";
+import { Disc } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import {
   getUserProfile,

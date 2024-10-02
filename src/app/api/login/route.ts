@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 const CLIENTID = process.env.CLIENT_ID;
 
 const REDIRECT_URI =
-  process.env.REDIRECT_URI || "http://localhost:3000/api/callback";
+  process.env.NODE_ENV === "production"
+    ? "https://grab-music.vercel.app/api/callback"
+    : "http://localhost:3000/api/callback";
 
 export async function GET() {
   console.log("starting to auth");

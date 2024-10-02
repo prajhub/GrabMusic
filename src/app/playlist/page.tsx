@@ -6,6 +6,7 @@ import { fetchSinglePlaylist } from "@/lib/spotify-api";
 import Image from "next/image";
 import { SpinnerOne } from "@/components/ui/spinner";
 import CreatePlaylist from "../_component/CreatePlaylist";
+import { Artist, TrackResponse } from "@/lib/util";
 export default function PlaylistDetails() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
@@ -16,6 +17,8 @@ export default function PlaylistDetails() {
     enabled: !!id,
   });
 
+  if (data) console.log(data);
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -25,6 +28,8 @@ export default function PlaylistDetails() {
   }
 
   const existingTracks = data?.tracks.items;
+
+  const trackResponse: TrackResponse = data.tracks;
 
   if (isError || !data) {
     return <p>Error retrieving playlist</p>;
@@ -57,24 +62,24 @@ export default function PlaylistDetails() {
       <div className="mt-12 w-full">
         <h2 className="text-2xl font-semibold">Tracks</h2>
         <ul className="mt-4 space-y-4">
-          {data.tracks.items.map((track: any, index: number) => (
+          {trackResponse.items.map((item, index) => (
             <li
-              key={track.track.id}
+              key={item.track.id}
               className="bg-gray-800 p-4 rounded-md flex items-center justify-between hover:bg-gray-700 transition"
             >
               <div className="flex items-center">
                 <span className="text-gray-400 text-lg mr-4">{index + 1}</span>
                 <div className="flex flex-col">
-                  <span className="text-white">{track.track.name}</span>
+                  <span className="text-white">{item.track.name}</span>
                   <span className="text-gray-400">
-                    {track.track.artists
-                      .map((artist: any) => artist.name)
+                    {item.track.artists
+                      .map((artist: Artist) => artist.name)
                       .join(", ")}
                   </span>
                 </div>
               </div>
               <div>
-                <span className="text-gray-400">{track.track.duration_ms}</span>
+                <span className="text-gray-400">{item.track.duration_ms}</span>
               </div>
             </li>
           ))}

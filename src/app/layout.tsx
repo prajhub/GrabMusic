@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "./globals.css";
-import { Lilita_One, Rowdies } from "next/font/google";
+import { Rowdies } from "next/font/google";
 import QueryProvider from "@/components/ui/tstack-query";
 import { ConditionalNavbar } from "./_component/Navbar";
 

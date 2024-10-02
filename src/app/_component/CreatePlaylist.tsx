@@ -84,9 +84,16 @@ export default function CreatePlaylist({
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="bg-gray-900 text-white rounded-xl p-8 shadow-lg w-full max-w-lg">
+        <DialogContent
+          aria-labelledby="create-playlist-title"
+          aria-describedby="create-playlist-description"
+          className="bg-gray-900 text-white rounded-xl p-8 shadow-lg w-full max-w-lg"
+        >
           <DialogHeader className="mb-6">
-            <DialogTitle className="text-3xl font-bold text-center tracking-wide">
+            <DialogTitle
+              id="create-playlist-title"
+              className="text-3xl font-bold text-center tracking-wide"
+            >
               Create New Playlist
             </DialogTitle>
           </DialogHeader>

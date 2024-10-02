@@ -50,10 +50,10 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen p-8">
+    <div className="bg-white text-black min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center mb-8">
-          <div className="relative w-32 h-32 rounded-full bg-gray-700 flex items-center justify-center">
+          <div className="relative w-32 h-32 rounded-full bg-white flex items-center justify-center">
             <Avatar className="w-24 h-24">
               <AvatarImage
                 src={data?.images?.[0]?.url}
@@ -77,7 +77,7 @@ export default function Dashboard() {
         </div>
 
         <div className="space-y-8">
-          <div className="bg-gray-800 p-6 rounded-lg">
+          <div className="bg-[#5d2c53] p-6 rounded-lg">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold flex items-center">
                 <span className="mr-2 tracking-wider "> Top Artists</span>

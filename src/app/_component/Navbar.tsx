@@ -3,14 +3,22 @@
 import React from "react";
 import ProfileDropdown from "./Profile-dropdown";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ModeToggle } from "@/components/ui/theme-toggle";
 import SearchBar from "./Searchbar";
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <nav className=" bg-[#ec4b60] w-full flex relative justify-between items-center mx-auto px-8 h-20">
-      <h1 className=" font-semibold text-3xl tracking-wide">GrabMusic</h1>
+      <h1
+        onClick={() => {
+          router.push("/");
+        }}
+        className=" font-semibold hover:cursor-pointer text-3xl tracking-wide"
+      >
+        GrabMusic
+      </h1>
       <div className="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
         <SearchBar />
       </div>

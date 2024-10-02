@@ -11,7 +11,15 @@ const SearchBar = () => {
 
   const handleSearchSubmit = (e: any) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
+
+    const spotifyUrlPattern =
+      /https:\/\/open\.spotify\.com\/playlist\/([a-zA-Z0-9]+)/;
+
+    const match = searchQuery.match(spotifyUrlPattern);
+    if (match && match[1]) {
+      const playlistId = match[1];
+      router.push(`/playlist?id=${playlistId}`);
+    } else if (searchQuery.trim()) {
       router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     }
   };
@@ -23,7 +31,7 @@ const SearchBar = () => {
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search for artists, songs, or podcasts"
+        placeholder="Paste playlist link or search..."
         className="pl-12 pr-4 py-3 text-black bg-[#f1f3f5] border-none rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-[#1db954]" // Spotify style
       />
       <SearchIcon className="absolute left-4 top-1.5 h-6 w-6 text-gray-500" />{" "}

@@ -145,3 +145,98 @@ export const fetchPlaylist = async (query: string) => {
     console.error("Error retrieving playlist:", error);
   }
 };
+
+export const fetchSinglePlaylist = async (playlistId: string) => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+    const res = await fetch(
+      `https://api.spotify.com/v1/playlists/${playlistId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    } else {
+      console.log("Error retrieving playlist.");
+      return new Error("Error retrieving playlist.");
+    }
+  } catch (error) {
+    return new Error("Error retrieving playlist.");
+  }
+};
+
+export const createPlaylist = async (
+  name: string,
+  user_id: string,
+  description: string
+) => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+
+    if (!accessToken) {
+      throw new Error("Access token is missing. Please log in again.");
+    }
+
+    const res = await fetch(
+      `https://api.spotify.com/v1/users/${user_id}/playlists`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          description: description,
+        }),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error(`Failed to create playlist. Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error creating playlist:", error);
+    throw error;
+  }
+};
+
+export const addTracksToPlaylist = async (
+  playlistId: string,
+  trackUris: string[]
+) => {
+  try {
+    const accessToken = localStorage.getItem("access_token");
+    const res = await fetch(
+      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uris: trackUris,
+          position: 0,
+        }),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to add tracks to playlist");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error adding tracks to playlist:", error);
+    throw error;
+  }
+};

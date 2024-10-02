@@ -1,7 +1,7 @@
 "use client";
 
 import { fetchPlaylist } from "@/lib/spotify-api";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import { useQuery } from "@tanstack/react-query";
 import { SpinnerTwo } from "@/components/ui/spinner";
@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Search, Music } from "lucide-react";
 
 export default function SearchResult() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const results = searchParams.get("query");
 
@@ -18,7 +19,9 @@ export default function SearchResult() {
     enabled: !!results,
   });
 
-  console.log(data);
+  const pushSinglePlaylist = (playlistId: string) => {
+    router.push(`/playlist?id=${playlistId}`);
+  };
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -38,12 +41,13 @@ export default function SearchResult() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {data.playlists.items.map((playlist: any) => (
               <div
+                onClick={() => pushSinglePlaylist(playlist.id)}
                 key={playlist.id}
                 className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <div className="relative w-full pt-[100%] mb-4">
                   <Image
-                    src={playlist.images[0]?.url || "/api/placeholder/300/300"}
+                    src={playlist.images[0]?.url}
                     alt={playlist.name}
                     layout="fill"
                     sizes="(max-width: 768px) 100vw, 33vw"

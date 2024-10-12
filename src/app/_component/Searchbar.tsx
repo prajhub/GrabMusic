@@ -3,11 +3,21 @@
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const searchParams = useSearchParams();
+
   const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (searchParams.get("focus") === "search" && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchParams]);
 
   const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,6 +39,7 @@ const SearchBar = () => {
       {" "}
       <Input
         type="text"
+        ref={searchInputRef}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Paste playlist link or search..."

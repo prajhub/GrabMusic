@@ -5,6 +5,8 @@ import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { Suspense } from "react";
+
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -51,4 +53,10 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default function WrappedSearchBar() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchBar />
+    </Suspense>
+  );
+}

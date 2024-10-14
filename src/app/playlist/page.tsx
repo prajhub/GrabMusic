@@ -6,9 +6,13 @@ const PlaylistDetailsClient = dynamic(() => import("./PlaylistClient"), {
   ssr: false,
 });
 
+function Loading() {
+  return <div className="text-white">Loading...</div>;
+}
+
 export default function PlaylistDetails() {
   return (
-    <Suspense fallback={<SpinnerOne />}>
+    <Suspense fallback={<Loading />}>
       <PlaylistDetailsClient />
     </Suspense>
   );

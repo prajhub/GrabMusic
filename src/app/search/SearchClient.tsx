@@ -2,7 +2,7 @@
 
 import { fetchPlaylist } from "@/lib/spotify-api";
 import { useSearchParams, useRouter } from "next/navigation";
-
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { SpinnerTwo } from "@/components/ui/spinner";
 import Image from "next/image";
@@ -20,7 +20,13 @@ export default function SearchClient() {
     enabled: !!results,
   });
 
-  if (data) console.log(data);
+  useEffect(() => {
+    if (data?.playlists?.items) {
+      data.playlists.items.forEach((playlist: Playlist) => {
+        router.prefetch(`/playlist?id=${playlist.id}`);
+      });
+    }
+  }, [data, router]);
 
   const pushSinglePlaylist = (playlistId: string) => {
     router.push(`/playlist?id=${playlistId}`);
@@ -34,7 +40,7 @@ export default function SearchClient() {
   }
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen p-8">
+    <div className="bg-black text-white min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold mb-6 flex items-center">
           <Search className="mr-2" /> Search Results for query
@@ -46,7 +52,7 @@ export default function SearchClient() {
               <div
                 onClick={() => pushSinglePlaylist(playlist.id)}
                 key={playlist.id}
-                className="bg-gray-800 p-4 rounded-lg hover:bg-gray-700 transition-colors"
+                className="bg-black p-4 rounded-lg hover:bg-gray-700 hover:cursor-pointer transition-colors"
               >
                 <div className="relative w-full pt-[100%] mb-4">
                   <Image

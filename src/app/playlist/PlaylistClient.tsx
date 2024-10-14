@@ -21,7 +21,7 @@ export default function PlaylistDetails() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <SpinnerOne />
+        Loading...
       </div>
     );
   }
@@ -70,7 +70,7 @@ export default function PlaylistDetails() {
               <div className="flex items-center">
                 <span className="text-gray-400 text-lg mr-4">{index + 1}</span>
                 <div className="flex flex-col">
-                  <span className="text-white">{item.track.name}</span>
+                  <span className="text-white">{item?.track.name}</span>
                   <span className="text-gray-400">
                     {item.track.artists
                       .map((artist: Artist) => artist.name)

@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSinglePlaylist } from "@/lib/spotify-api";
 import Image from "next/image";
-import { SpinnerOne } from "@/components/ui/spinner";
 import CreatePlaylist from "../_component/CreatePlaylist";
 import { Artist, TrackResponse } from "@/lib/util";
 

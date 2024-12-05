@@ -30,13 +30,14 @@ export default function Hero() {
           to help you
         </span>
         <span className="inline-block text-[#aa69ff]">
-          copy other's playlist
+          copy other&apos;s playlist
         </span>
+
         <span className="inline-block text-black">and make it own.</span>
       </h1>
 
       {/* Updated Subtext */}
-      <p className="mx-auto mt-6 max-w-2xl text-md font-medium tracking-tight text-slate-400">
+      <p className="mx-auto mt-6 max-w-2xl text-md font-medium tracking-tight text-slate-600">
         Easily clone your favorite playlists in just a{" "}
         <span className="text-[#aa69ff]">few clicks.</span>
       </p>

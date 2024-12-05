@@ -86,7 +86,7 @@ export default function ProfileDropdown() {
       ) : (
         <Button
           onClick={handleLogin}
-          className="bg-[#44183b] tracking-wide hover:bg-[#2f0a26] text-lg text-white py-5 rounded-full px-8"
+          className=" tracking-tight bg-[#9a58df] hover:bg-[#8544c5] text-lg font-large text-white py-5 rounded-full px-8"
         >
           Log in
         </Button>

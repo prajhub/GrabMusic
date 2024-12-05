@@ -7,39 +7,37 @@ const SuccessLoginClient = () => {
   useSetToken();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#ed4a60] dark:bg-[#ed4a60]">
-      <section className="w-full">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div className="mx-auto max-w-screen-sm text-center">
-            <h2 className="mb-4 text-4xl tracking-wider font-extrabold leading-wider text-gray-900 dark:text-white">
+    <div className="min-h-screen flex items-center justify-center bg-[#ffffff] dark:bg-[#ed4a60]">
+      <section className="w-full px-6 sm:px-8 lg:px-16">
+        <div className="py-8 sm:py-16 mx-auto max-w-screen-xl">
+          <div className="mx-auto max-w-screen-md text-center">
+            {/* Increased the font size for larger screens and made it responsive */}
+            <h2 className="mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
               You have successfully logged in!
             </h2>
-            <p className="mb-6 font-light text-gray-900 dark:text-white md:text-lg">
-              I hope you find this app useful.
-            </p>
 
-            {/* Flex container to align the buttons horizontally */}
-            <div className="flex justify-center items-center space-x-4">
+            {/* Flex container for buttons with better spacing */}
+            <div className="flex flex-col sm:flex-row sm:space-x-4 justify-center items-center space-y-4 sm:space-y-0">
               {/* Go to Dashboard button */}
-              <Button className="bg-[#eecc75] tracking-normal text-md">
+              <Button className="w-full sm:w-auto bg-[#9a58df] hover:bg-[#8544c5] text-md py-3 px-8 rounded-lg transition duration-200 ease-in-out transform hover:scale-105">
                 Go to Dashboard
               </Button>
 
               {/* Home button with arrow */}
-              <div className="inline-flex items-center space-x-2 tracking-wide text-white font-normal px-4 py-2 rounded-lg focus:outline-none">
+              <div className="inline-flex items-center space-x-2 tracking-wide text-black font-normal px-6 py-3 rounded-lg focus:outline-none">
                 <a href="/" className="flex items-center">
                   Home
                   <svg
                     className="ml-2 w-4 h-4"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
+                    strokeWidth="2"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>

@@ -20,10 +20,16 @@ export default function SearchClient() {
     enabled: !!results,
   });
 
+  const filteredPlaylists = data?.playlists?.items?.filter(
+    (playlist: Playlist) => playlist !== null
+  );
+
   useEffect(() => {
-    if (data?.playlists?.items) {
-      data.playlists.items.forEach((playlist: Playlist) => {
-        router.prefetch(`/playlist?id=${playlist.id}`);
+    if (filteredPlaylists) {
+      filteredPlaylists.forEach((playlist: Playlist) => {
+        if (playlist.id) {
+          router.prefetch(`/playlist?id=${playlist.id}`);
+        }
       });
     }
   }, [data, router]);
@@ -40,42 +46,49 @@ export default function SearchClient() {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen p-8">
+    <div className="bg-white text-black min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 flex items-center">
-          <Search className="mr-2" /> Search Results for query
+        <h1 className="text-xl font-semibold mb-6 tracking-normal flex items-center">
+          <Search className="mr-2" />
+          Search
+          <span className="text-[#aa69ff] font-extrabold ml-1">Results</span>
         </h1>
 
-        {data?.playlists?.items?.length > 0 ? (
+        {filteredPlaylists?.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {data.playlists.items.map((playlist: Playlist) => (
-              <div
-                onClick={() => pushSinglePlaylist(playlist.id)}
-                key={playlist.id}
-                className="bg-black p-4 rounded-lg hover:bg-gray-700 hover:cursor-pointer transition-colors"
-              >
-                <div className="relative w-full pt-[100%] mb-4">
-                  <Image
-                    src={playlist.images[0]?.url}
-                    alt={playlist.name}
-                    layout="fill"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    objectFit="cover"
-                    className="rounded-md"
-                  />
+            {filteredPlaylists.map((playlist: Playlist) => {
+              if (!playlist || !playlist.name) {
+                return null; // Or render a placeholder component here
+              }
+              return (
+                <div
+                  onClick={() => pushSinglePlaylist(playlist.id)}
+                  key={playlist.id}
+                  className="bg-[#d8d4d4] p-4 rounded-lg hover:bg-[#b4b2b2] hover:cursor-pointer transition-colors"
+                >
+                  <div className="relative w-full pt-[100%] mb-4">
+                    <Image
+                      src={playlist.images?.[0]?.url || "/default-image.png"} // Default image if no image available
+                      alt={playlist.name}
+                      layout="fill"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      objectFit="cover"
+                      className="rounded-md"
+                    />
+                  </div>
+                  <h2 className="font-semibold text-md mb-1 truncate">
+                    {playlist.name || "Unknown Playlist"}
+                  </h2>
+                  <p className="text-xs text-gray-600 mb-2 line-clamp-2">
+                    {playlist.description || "No description available."}
+                  </p>
+                  <div className="flex items-center text-lg font-semibold text-gray-500">
+                    <Music className="w-4 h-4 mr-1" />
+                    {playlist.tracks.total} tracks
+                  </div>
                 </div>
-                <h2 className="font-semibold text-lg mb-1 truncate">
-                  {playlist.name}
-                </h2>
-                <p className="text-sm text-gray-400 mb-2 line-clamp-2">
-                  {playlist.description || "No description available."}
-                </p>
-                <div className="flex items-center text-sm text-gray-500">
-                  <Music className="w-4 h-4 mr-1" />
-                  {playlist.tracks.total} tracks
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <p>No playlists found.</p>

@@ -80,7 +80,7 @@ export default function CreatePlaylist({
       <Toaster />
       <Dialog open={dialogOpen} onOpenChange={(open) => setDialogOpen(open)}>
         <DialogTrigger asChild>
-          <Button className="mt-4 px-6 py-2 tracking-wider bg-[#1db954] hover:bg-[#1aa34a] text-white font-semibold rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1db954]">
+          <Button className="mt-4 px-6 py-2 tracking-tight text-bold text-white bg-[#9a58df] hover:bg-[#8544c5]">
             Copy this{" "}
           </Button>
         </DialogTrigger>

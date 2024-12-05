@@ -11,17 +11,11 @@ export default function Hero() {
     router.push("/?focus=search");
   };
   return (
-    <div className="min-h-[700px] flex flex-col justify-center items-center overflow-hidden mx-auto bg-[#ec4b60] max-w-full px-4 sm:px-6 lg:px-8 text-center">
-      <p className="mx-auto max-w-1xl text-lg tracking-tight text-white">
-        Welcome to
-        <span className="border-b pl-2 border-dotted text-white border-slate-300">
-          Grab Music
-        </span>
-      </p>
-
-      <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-        <span className="inline-block mr-2 text-white">
-          Your
+    <div className="min-h-[700px] flex flex-col justify-center items-center overflow-hidden mx-auto bg-[#ffffff] max-w-full px-4 sm:px-6 lg:px-8 text-center">
+      {/* Updated Heading */}
+      <h1 className="mx-auto max-w-4xl font-display text-5xl font-semibold tracking-tight text-slate-900 sm:text-7xl">
+        <span className="inline-block text-black">
+          An
           <span className="relative whitespace-nowrap text-blue-600">
             <svg
               aria-hidden="true"
@@ -31,19 +25,20 @@ export default function Hero() {
             >
               <path d="..."></path>
             </svg>
-            <span className="relative  text-white">Personal</span>
+            <span className="relative text-black"> app </span>
           </span>
+          to help you
         </span>
-        <span className="inline-block text-white">Playlist Grabber</span>
+        <span className="inline-block text-[#aa69ff]">
+          copy other's playlist
+        </span>
+        <span className="inline-block text-black">and make it own.</span>
       </h1>
 
-      <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-        <span className="inline-block text-white tracking-wide">
-          Copy other&apos;s playlist
-        </span>
-        <span className="inline-block pl-1 text-white tracking-wide">
-          into your own.
-        </span>
+      {/* Updated Subtext */}
+      <p className="mx-auto mt-6 max-w-2xl text-md font-medium tracking-tight text-slate-400">
+        Easily clone your favorite playlists in just a{" "}
+        <span className="text-[#aa69ff]">few clicks.</span>
       </p>
 
       <div className="mt-10 flex flex-col justify-center gap-y-5 sm:flex-row sm:gap-y-0 sm:gap-x-6">
@@ -53,9 +48,9 @@ export default function Hero() {
         >
           <Button
             onClick={handleStartNowClick}
-            className="bg-[#44183b] tracking-wide hover:bg-[#2f0a26] text-lg text-white py-5 rounded-full px-8"
+            className="bg-[#9a58df] hover:bg-[#8544c5] text-white font-medium py-2 px-4 rounded-full animate-pulse"
           >
-            Start Now&nbsp;
+            Get Started
           </Button>
         </div>
       </div>

@@ -34,7 +34,7 @@ export default function PlaylistDetails() {
   }
 
   return (
-    <div className="flex flex-col items-center bg-gradient-to-b from-black to-gray-900 min-h-screen text-white px-4">
+    <div className="flex flex-col items-center bg-white min-h-screen text-black px-4">
       <div className="mt-10 flex items-center">
         <div className="relative w-64 h-64 shadow-xl">
           <Image
@@ -47,11 +47,11 @@ export default function PlaylistDetails() {
         </div>
         <div className="ml-8">
           <h1 className="text-4xl font-bold">{data.name}</h1>
-          <p className="mt-2 text-xl text-gray-400">{data.description}</p>
-          <p className="mt-4 text-lg text-gray-500">
+          <p className="mt-2 text-md text-gray-400">{data.description}</p>
+          <p className="mt-4 text-sm text-gray-400">
             Created by {data.owner.display_name}
           </p>
-          <p className="mt-2 text-lg text-gray-500">
+          <p className="mt-2 text-lg font-bold text-gray-500">
             {data.followers.total} followers
           </p>
           <CreatePlaylist existingTracks={existingTracks} />
@@ -64,13 +64,15 @@ export default function PlaylistDetails() {
           {trackResponse.items.map((item, index) => (
             <li
               key={item.track.id}
-              className="bg-gray-800 p-4 rounded-md flex items-center justify-between hover:bg-gray-700 transition"
+              className="bg-[#d8d4d4] hover:bg-[#b4b2b2] p-4 rounded-md flex items-center justify-between  transition"
             >
               <div className="flex items-center">
-                <span className="text-gray-400 text-lg mr-4">{index + 1}</span>
+                <span className="text-black text-lg mr-4">{index + 1}</span>
                 <div className="flex flex-col">
-                  <span className="text-white">{item?.track.name}</span>
-                  <span className="text-gray-400">
+                  <span className="text-black font-bold text-md">
+                    {item?.track.name}
+                  </span>
+                  <span className="text-gray-700 text-sm">
                     {item.track.artists
                       .map((artist: Artist) => artist.name)
                       .join(", ")}
@@ -78,7 +80,7 @@ export default function PlaylistDetails() {
                 </div>
               </div>
               <div>
-                <span className="text-gray-400">{item.track.duration_ms}</span>
+                <span className="text-black">{item.track.duration_ms}</span>
               </div>
             </li>
           ))}

@@ -6,7 +6,7 @@ const PlaylistDetailsClient = dynamic(() => import("./PlaylistClient"), {
 });
 
 function Loading() {
-  return <div className="text-white">Loading...</div>;
+  return <div className="text-white bg-white">Loading...</div>;
 }
 
 export default function PlaylistDetails() {

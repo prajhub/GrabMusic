@@ -51,9 +51,13 @@ export default function Dashboard() {
             <div className="ml-8">
               <h1 className="text-4xl font-bold">{data?.display_name}</h1>
               <div className="flex mt-2 space-x-4 text-gray-400">
-                <span>{data?.followers?.total} Followers</span>
+                <span className="text-sm">
+                  {data?.followers?.total} Followers
+                </span>
 
-                <span>{data?.playlists?.total} Playlists</span>
+                <span className="text-sm">
+                  {data?.playlists?.total} Playlists
+                </span>
               </div>
             </div>
           ) : (
@@ -62,10 +66,13 @@ export default function Dashboard() {
         </div>
 
         <div className="space-y-8">
-          <div className="bg-[#5d2c53] p-6 rounded-lg">
+          <div className="bg-[#d8d4d4] p-6 rounded-lg">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-semibold flex items-center">
-                <span className="mr-2 tracking-wider "> Top Artists</span>
+              <h2 className="text-xl font-semibold flex items-center">
+                <span className="mr-2  tracking-wide ">
+                  {" "}
+                  Top <span className="text-[#aa69ff]">Artists</span>
+                </span>
               </h2>
             </div>
             <div className="flex justify-between items-start">
@@ -96,10 +103,12 @@ export default function Dashboard() {
               ))}
             </div>
           </div>
-          <div className="bg-gray-800 p-6 rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4 flex items-center">
-              <Disc className="mr-2" /> Recently Played
+          <div className="bg-[#d8d4d4] p-6 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4 flex items-center">
+              <Disc className="mr-2" />
+              <span className="text-[#aa69ff]">Recently&nbsp;</span> Played
             </h2>
+
             <ul className="space-y-2">
               {recentlyPlayed?.items.map((item: recentlyPlayedTrack) => (
                 <li key={item.track.id} className="flex items-center">
@@ -113,8 +122,10 @@ export default function Dashboard() {
                     />
                   </div>
                   <div>
-                    <p className="font-medium">{item.track.name}</p>
-                    <p className="text-sm text-gray-400">
+                    <p className="font-medium tracking-tight">
+                      {item.track.name}
+                    </p>
+                    <p className="text-xs text-gray-400">
                       {item.track.artists[0].name}
                     </p>
                   </div>

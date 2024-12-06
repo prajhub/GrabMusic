@@ -19,7 +19,7 @@ export default function PlaylistDetails() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex bg-white text-black justify-center items-center min-h-screen">
         Loading...
       </div>
     );

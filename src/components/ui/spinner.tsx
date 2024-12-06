@@ -18,7 +18,7 @@ const SpinnerTwo = () => {
   return (
     <div>
       <SquareLoader
-        color="#FFFFFF"
+        color="#000000"
         loading={true}
         size={150}
         aria-label="Loading Spinner"

@@ -1,7 +1,6 @@
 "use client";
 
 export const getUserProfile = async () => {
-  console.log("Starting to get user profile");
   const accessToken = localStorage.getItem("access_token");
 
   const res = await fetch("https://api.spotify.com/v1/me", {
@@ -14,7 +13,6 @@ export const getUserProfile = async () => {
   const data = await res.json();
 
   if (res.ok) {
-    console.log(data.display_name);
     return data;
   } else {
     console.log("Error retrieving user profile.");

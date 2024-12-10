@@ -1,11 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
+import { QueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   const router = useRouter();
+
+  //To DO: home page get started fix with Tanstack
+
+  // const queryClient = new QueryClient();
+
+  // const cache = queryClient.getQueryCache();
+  // console.log(cache.find({ queryKey: ["userProfile"] }));
 
   const handleStartNowClick = () => {
     router.push("/?focus=search");
@@ -29,14 +36,13 @@ export default function Hero() {
           </span>
           to help you
         </span>
-        <span className="inline-block text-[#aa69ff]">
-          copy other&apos;s playlist
+        <span className="inline-block text-[#aa69ff] py-1">
+          copy other&apos;s Spotify playlist
         </span>
 
         <span className="inline-block text-black">and make it own.</span>
       </h1>
 
-      {/* Updated Subtext */}
       <p className="mx-auto mt-6 max-w-2xl text-md font-medium tracking-tight text-slate-600">
         Easily clone your favorite playlists in just a{" "}
         <span className="text-[#aa69ff]">few clicks.</span>
@@ -49,7 +55,7 @@ export default function Hero() {
         >
           <Button
             onClick={handleStartNowClick}
-            className="bg-[#9a58df] hover:bg-[#8544c5] text-white font-medium py-2 px-4 rounded-full animate-pulse"
+            className="bg-[#9a58df] hover:bg-[#8544c5] text-white tracking-wide font-large text-md py-5 px-4 rounded-full animate-pulse"
           >
             Get Started
           </Button>

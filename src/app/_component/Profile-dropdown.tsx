@@ -10,11 +10,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { logOut } from "@/lib/spotify-api";
+import { UserProfile } from "@/lib/util";
 
 export default function ProfileDropdown({
   userProfile,
   refetchUserProfile,
-}: any) {
+}: {
+  userProfile: UserProfile;
+  refetchUserProfile: () => void;
+}) {
   const router = useRouter();
 
   const handleLogout = () => {

@@ -29,7 +29,7 @@ const Navbar = () => {
     data: userProfile,
     refetch,
     isLoading,
-    isError,
+    // isError,
   } = useQuery({
     queryKey: ["userProfile"],
     queryFn: getUserProfile,

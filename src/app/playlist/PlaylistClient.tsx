@@ -29,6 +29,12 @@ export default function PlaylistDetails() {
 
   const trackResponse: TrackResponse = data.tracks;
 
+  const filteredTrackResponse: TrackResponse = {
+    items: trackResponse.items.filter(
+      (item) => item.track && item.track.name !== null
+    ),
+  };
+
   if (isError || !data) {
     return <p>Error retrieving playlist</p>;
   }
@@ -61,7 +67,7 @@ export default function PlaylistDetails() {
       <div className="mt-12 w-full">
         <h2 className="text-2xl font-semibold">Tracks</h2>
         <ul className="mt-4 space-y-4">
-          {trackResponse.items.map((item, index) => (
+          {filteredTrackResponse.items.map((item, index) => (
             <li
               key={item.track.id}
               className="bg-[#d8d4d4] hover:bg-[#b4b2b2] p-4 rounded-md flex items-center justify-between  transition"

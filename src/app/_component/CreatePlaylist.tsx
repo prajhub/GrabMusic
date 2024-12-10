@@ -88,7 +88,7 @@ export default function CreatePlaylist({
         <DialogContent
           aria-labelledby="create-playlist-title"
           aria-describedby="create-playlist-description"
-          className="bg-gray-900 text-white rounded-xl p-8 shadow-lg w-full max-w-lg"
+          className="bg-white text-black rounded-xl p-8 shadow-lg w-full max-w-lg"
         >
           <DialogHeader className="mb-6">
             <DialogTitle
@@ -113,7 +113,7 @@ export default function CreatePlaylist({
                 id="playlist-name"
                 value={playlistName}
                 onChange={(e) => setPlaylistName(e.target.value)}
-                className="mt-2 w-full bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:border-transparent py-3 px-4"
+                className="mt-2 w-full bg-gray-100 text-black  rounded-lg focus:outline-none focus:ring-2 focus:ring-[#aa69ff] focus:border-transparent py-3 px-4"
                 placeholder="Enter playlist name"
               />
             </div>
@@ -128,7 +128,7 @@ export default function CreatePlaylist({
               <textarea
                 id="playlist-description"
                 rows={3}
-                className="mt-2 w-full bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:border-transparent py-3 px-4"
+                className="mt-2 w-full bg-gray-100 text-black   rounded-lg focus:outline-none focus:ring-2 focus:ring-[#aa69ff] focus:border-transparent py-3 px-4"
                 placeholder="Add a description (optional)"
                 value={playlistDescription}
                 onChange={(e) => setPlaylistDescription(e.target.value)}
@@ -141,13 +141,13 @@ export default function CreatePlaylist({
             <Button
               variant="outline"
               onClick={() => setDialogOpen(false)}
-              className="px-8 py-2 rounded-full border border-gray-700 text-gray-300 hover:bg-gray-800 hover:border-gray-600 transition"
+              className="px-8 py-2 rounded-full border bg-gray-100 border-gray-700 text-black hover:bg-gray-300  transition"
             >
               Cancel
             </Button>
             <Button
               onClick={handleCreatePlaylist}
-              className="px-8 py-2 bg-[#1db954] text-white rounded-full hover:bg-[#1aa34a] transition"
+              className="px-8 py-2 bg-[#9a58df] text-white rounded-full hover:bg-[#8544c5] transition"
               disabled={mutation.isPending || isLoading}
             >
               {mutation.isPending ? "Creating..." : "Create"}
